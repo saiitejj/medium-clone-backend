@@ -8,7 +8,11 @@ const postRoutes = require("./routes/posts");
 dotenv.config();
 
 const app=express()
-app.use(cors())
+const corsOptions = {
+  origin: process.env.CLIENT_URL,
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 app.use(express.json())
 
 app.use("/api/auth",authRoutes)
